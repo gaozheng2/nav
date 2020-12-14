@@ -48,9 +48,11 @@ const render = () => {
 const x = localStorage.getItem('x')
 const xObject = JSON.parse(x)
 let hashMap = xObject || [
-  { logo: 'A', url: 'https://www.acfun.cn' },
+  { logo: 'x', url: 'https://xiedaimala.com/' },
   { logo: 'B', url: 'https://www.bilibili.com' },
   { logo: 'G', url: 'https://google.com' },
+  { logo: 'I', url: 'https://www.iconfont.cn/' },
+  { logo: 'V', url: 'https://vuetifyjs.com/' },
 ]
 render()
 
@@ -70,13 +72,19 @@ $('.addButton').on('click', () => {
   saveList(hashMap)
 })
 
-//【O】监听 键盘按下 事件
+//【O】监听 页面 键盘按下
 $(document).on('keypress', (e) => {
   const { key } = e
   hashMap.forEach((item) => {
-    console.log(item.logo)
     if (item.logo.toLowerCase() === key) {
       window.open(item.url)
     }
   })
 })
+
+//【O】监听 搜索框 键盘按下
+$('.searchForm')
+  .find('input')
+  .on('keypress', (e) => {
+    e.stopPropagation() // 阻止冒泡
+  })

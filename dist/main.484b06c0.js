@@ -151,14 +151,20 @@ var render = function render() {
 var x = localStorage.getItem('x');
 var xObject = JSON.parse(x);
 var hashMap = xObject || [{
-  logo: 'A',
-  url: 'https://www.acfun.cn'
+  logo: 'x',
+  url: 'https://xiedaimala.com/'
 }, {
   logo: 'B',
   url: 'https://www.bilibili.com'
 }, {
   logo: 'G',
   url: 'https://google.com'
+}, {
+  logo: 'I',
+  url: 'https://www.iconfont.cn/'
+}, {
+  logo: 'V',
+  url: 'https://vuetifyjs.com/'
 }];
 render(); //【O】监听 添加按钮 的点击
 
@@ -178,17 +184,19 @@ $('.addButton').on('click', function () {
     url: url
   });
   saveList(hashMap);
-}); //【O】监听 键盘按下 事件
+}); //【O】监听 页面 键盘按下
 
 $(document).on('keypress', function (e) {
   var key = e.key;
   hashMap.forEach(function (item) {
-    console.log(item.logo);
-
     if (item.logo.toLowerCase() === key) {
       window.open(item.url);
     }
   });
+}); //【O】监听 搜索框 键盘按下
+
+$('.searchForm').find('input').on('keypress', function (e) {
+  e.stopPropagation(); // 阻止冒泡
 });
 },{}]},{},["epB2"], null)
-//# sourceMappingURL=main.52a1cfdb.js.map
+//# sourceMappingURL=main.484b06c0.js.map
